@@ -15,7 +15,15 @@ const openai = new OpenAI({
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public')); // Serve static files from public directory
+
+// Serve static files directly
+app.use('/styles.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'styles.css'));
+});
+
+app.use('/script.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'script.js'));
+});
 
 // Configure multer for file uploads
 const storage = multer.memoryStorage();
