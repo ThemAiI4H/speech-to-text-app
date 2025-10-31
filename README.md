@@ -165,7 +165,7 @@ vercel --prod
 - Free tier disponibile
 
 ### 📱 Demo Interattiva
-Visita la demo live: [GitHub Pages Demo](#) *(carica prima su GitHub)*
+Visita la demo live: https://ThemAiI4H.github.io/speech-to-text-app *(deploy automatico)*
 
 ## License
 
