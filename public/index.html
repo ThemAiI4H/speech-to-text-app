@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text - OpenAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Speech to Text Converter</h1>
+        <p>Record audio or upload a file to convert speech to text using OpenAI's API</p>
+
+        <div class="recording-section">
+            <h2>Record Audio</h2>
+            <button id="recordBtn" class="btn btn-primary">Start Recording</button>
+            <button id="stopBtn" class="btn btn-danger" disabled>Stop Recording</button>
+            <div id="recordingStatus" class="status">Not recording</div>
+        </div>
+
+        <div class="upload-section">
+            <h2>Or Upload Audio File</h2>
+            <input type="file" id="audioFile" accept="audio/*" class="file-input">
+            <button id="uploadBtn" class="btn btn-secondary">Transcribe File</button>
+        </div>
+
+        <div class="results-section">
+            <h2>Transcription Result</h2>
+            <div id="transcriptionResult" class="result-box">
+                <p class="placeholder">Your transcription will appear here...</p>
+            </div>
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Transcribing audio...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

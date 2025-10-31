@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text App - Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .demo-notice {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-notice h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .demo-notice p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎙️ Speech to Text App</h1>
+        <p>Demo interattiva - Trascrizione audio con OpenAI</p>
+
+        <div class="demo-notice">
+            <h3>🚀 Demo Online</h3>
+            <p>Questa è una versione demo che funziona senza backend. Mostra l'interfaccia e simula le funzionalità.</p>
+
+            <div class="demo-buttons">
+                <a href="https://github.com/TUO-USERNAME/speech-to-text-app" class="demo-btn" target="_blank">
+                    📁 Vedi su GitHub
+                </a>
+                <a href="https://github.com/TUO-USERNAME/speech-to-text-app/archive/main.zip" class="demo-btn" target="_blank">
+                    📦 Scarica ZIP Completo
+                </a>
+                <a href="https://TUO-USERNAME.github.io/speech-to-text-app" class="demo-btn" target="_blank">
+                    🌐 Demo Live
+                </a>
+                <a href="README.md" class="demo-btn">
+                    📖 Documentazione
+                </a>
+            </div>
+        </div>
+
+        <div class="recording-section">
+            <h2>🎤 Registra Audio</h2>
+            <button id="recordBtn" class="btn btn-primary">▶️ Avvia Registrazione</button>
+            <button id="stopBtn" class="btn btn-danger" disabled>⏹️ Ferma Registrazione</button>
+            <div id="recordingStatus" class="status">🎯 Pronto per registrare</div>
+        </div>
+
+        <div class="upload-section">
+            <h2>📁 Carica File Audio</h2>
+            <input type="file" id="audioFile" accept="audio/*" class="file-input">
+            <button id="uploadBtn" class="btn btn-secondary">📤 Elabora File</button>
+        </div>
+
+        <div class="results-section">
+            <h2>📝 Risultato Trascrizione</h2>
+            <div id="transcriptionResult" class="result-box">
+                <p class="placeholder">🎭 <strong>Demo Mode:</strong> Questa è una simulazione!<br><br>
+                In una app reale, qui apparirebbe la trascrizione del tuo audio elaborata da OpenAI.<br><br>
+                💡 <strong>Per la versione completa:</strong><br>
+                1. Scarica il progetto completo<br>
+                2. Installa Node.js<br>
+                3. Configura la tua API key OpenAI<br>
+                4. Avvia il server locale</p>
+            </div>
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>🎭 Simulazione elaborazione...</p>
+            </div>
+        </div>
+
+        <div class="demo-notice">
+            <h3>⚙️ Come Funziona la Versione Completa</h3>
+            <p>La versione completa include un server Node.js che:</p>
+            <ul style="color: rgba(255, 255, 255, 0.8); padding-left: 20px;">
+                <li>📡 Invia audio alle API OpenAI</li>
+                <li>🔄 Riceve trascrizioni in tempo reale</li>
+                <li>💾 Gestisce file fino a 25MB</li>
+                <li>🔒 Mantiene sicura la tua API key</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Demo JavaScript - Simula le funzionalità
+        const recordBtn = document.getElementById('recordBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const recordingStatus = document.getElementById('recordingStatus');
+        const audioFile = document.getElementById('audioFile');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const transcriptionResult = document.getElementById('transcriptionResult');
+        const loading = document.getElementById('loading');
+
+        // Simula registrazione
+        recordBtn.addEventListener('click', () => {
+            recordBtn.disabled = true;
+            stopBtn.disabled = false;
+            recordingStatus.textContent = '🎤 Registrazione in corso... (simulato)';
+            recordingStatus.className = 'status recording';
+        });
+
+        stopBtn.addEventListener('click', () => {
+            recordBtn.disabled = false;
+            stopBtn.disabled = true;
+            recordingStatus.textContent = '⏳ Elaborazione... (simulato)';
+            recordingStatus.className = 'status not-recording';
+
+            // Simula elaborazione
+            loading.style.display = 'block';
+            transcriptionResult.innerHTML = '<p class="placeholder">🎭 Elaborazione in corso...</p>';
+
+            setTimeout(() => {
+                loading.style.display = 'none';
+                transcriptionResult.innerHTML = `
+                    <p class="transcription-text">
+                        🎭 <strong>Demo Trascrizione:</strong><br><br>
+                        "Ciao, questa è una trascrizione simulata della tua registrazione audio.
+                        Nella versione reale, questo testo sarebbe generato dall'API OpenAI
+                        basata sul tuo audio effettivo."
+                        <br><br>
+                        <em>💡 Questa demo mostra solo l'interfaccia utente.</em>
+                    </p>
+                `;
+                recordingStatus.textContent = '✅ Elaborazione completata';
+            }, 3000);
+        });
+
+        // Simula upload file
+        uploadBtn.addEventListener('click', () => {
+            const file = audioFile.files[0];
+            if (!file) {
+                alert('🎭 Demo: Seleziona un file audio per simulare l\'upload!');
+                return;
+            }
+
+            loading.style.display = 'block';
+            transcriptionResult.innerHTML = '<p class="placeholder">🎭 Elaborazione file simulata...</p>';
+
+            setTimeout(() => {
+                loading.style.display = 'none';
+                transcriptionResult.innerHTML = `
+                    <p class="transcription-text">
+                        🎭 <strong>Demo Trascrizione File:</strong><br><br>
+                        "Questo è il risultato simulato della trascrizione del file '${file.name}'.
+                        Nella versione reale, OpenAI elaborerebbe il contenuto audio effettivo
+                        del tuo file e restituirebbe il testo trascritto."
+                        <br><br>
+                        <em>📁 File simulato: ${file.name} (${(file.size / 1024).toFixed(1)} KB)</em>
+                    </p>
+                `;
+            }, 2500);
+        });
+
+        // Aggiorna stato iniziale
+        recordingStatus.className = 'status not-recording';
+    </script>
+</body>
+</html>

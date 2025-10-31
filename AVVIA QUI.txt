@@ -1,0 +1,64 @@
+🚀 SPEECH TO TEXT APP - ISTRUZIONI RAPIDE
+===========================================
+
+🎯 AVVIO SEMPLICE:
+Fai DOPPIO CLICK sul file corrispondente al tuo sistema operativo:
+
+• Windows: 🚀 AVVIA APP.bat
+• Ubuntu/Linux: avvia-ubuntu.sh (doppio click)
+• macOS/Altro Linux: 🚀 AVVIA APP.sh
+
+💡 SU UBUNTU: Se il doppio click non funziona:
+1. Apri terminale nella cartella del progetto
+2. Digita: ./avvia-ubuntu.sh
+3. Premi Enter
+
+L'app si aprirà automaticamente nel browser!
+
+📋 PRIMA CONFIGURAZIONE:
+1. 🔍 DIAGNOSTICA: doppio click su "DEBUG-APP.bat" (controlla tutto!)
+2. (Opzionale) Controlla prerequisiti: "CONTROLLA-PREREQUISITI.bat"
+3. Apri il file ".env"
+4. Inserisci la tua API key OpenAI:
+   OPENAI_API_KEY=sk-your-api-key-here
+
+⚠️  IMPORTANTE:
+- Assicurati di avere Node.js installato (vedi sotto)
+- Non chiudere la finestra del terminale mentre usi l'app
+- Premi Ctrl+C (o chiudi la finestra) per fermare il server
+
+💻 PREREQUISITI PER FUNZIONARE:
+• Node.js (versione 14 o superiore) - INSTALLA AUTOMATICAMENTE!
+• Connessione internet (per API OpenAI)
+• Browser web moderno (Chrome, Firefox, Edge)
+• API Key OpenAI (gratuita, si registra su openai.com)
+
+🚀 INSTALLAZIONE AUTOMATICA NODE.JS:
+• Windows: doppio click su "INSTALLA-NODEJS.bat"
+• Ubuntu/Linux: ./installa-nodejs-ubuntu.sh
+
+Creato con ❤️ per rendere tutto più semplice!
+ SUPPORTO:
+Se hai problemi, consulta il file README.md
+
+ CONDIVIDI CON UN COLLEGA:
+
+🔹 OPZIONE LOCALE (Completa):
+1️⃣ Esegui "PREPARA-CONDIVISIONE.bat" (solo tu)
+2️⃣ Comprimi la cartella in ZIP
+3️⃣ Invia il ZIP al collega
+4️⃣ Il collega deve:
+   - Estrarre il ZIP
+   - Leggere "AVVIA QUI.txt"
+   - Configurare ".env" con la SUA API key
+   - Fare doppio click su "🚀 AVVIA APP.bat"
+
+🔹 OPZIONE ONLINE (Demo):
+1️⃣ Carica su GitHub (vedi GITHUB-DEPLOY.md)
+2️⃣ Attiva GitHub Pages
+3️⃣ Condividi il link: https://TUO-USERNAME.github.io/speech-to-text-app
+4️⃣ I visitatori vedranno la demo interattiva
+
+Creato con ❤️ per rendere tutto più semplice!
+===========================================
+Creato con ❤️ per rendere tutto più semplice!
