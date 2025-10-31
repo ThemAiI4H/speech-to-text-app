@@ -2,17 +2,23 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
     steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -23,17 +29,27 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Build demo
+    - name: Build demo for GitHub Pages
       run: |
-        # Copia la demo nella root per GitHub Pages
+        echo "Building demo for GitHub Pages..."
+        # Copia i file necessari nella root
         cp public/demo.html index.html
         cp public/styles.css styles.css
         cp public/script.js script.js
+        # Assicurati che esistano
+        ls -la index.html styles.css script.js
+
+    - name: Setup Pages
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './'
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
-        cname: speech-to-text-app-demo.netlify.app  # Opzionale: tuo dominio personalizzato
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      id: deployment
+      uses: actions/deploy-pages@v4
