@@ -6,7 +6,6 @@ const OpenAI = require('openai');
 const path = require('path');
 
 const app = express();
-const port = 3000;
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -73,6 +72,13 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'Speech to Text API is running' });
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+const port = process.env.PORT || 3000;
+
+if (require.main === module) {
+  // Solo se eseguito direttamente (non su Vercel)
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
