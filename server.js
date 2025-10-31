@@ -16,12 +16,12 @@ const openai = new OpenAI({
 app.use(cors());
 app.use(express.json());
 
-// Serve static files directly
-app.use('/styles.css', (req, res) => {
+// Serve static files directly for Vercel
+app.get('/styles.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'styles.css'));
 });
 
-app.use('/script.js', (req, res) => {
+app.get('/script.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'script.js'));
 });
 
