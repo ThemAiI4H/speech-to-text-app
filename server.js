@@ -67,6 +67,11 @@ app.post('/transcribe', upload.single('audio'), async (req, res) => {
   }
 });
 
+// Serve index.html for root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'Speech to Text API is running' });
